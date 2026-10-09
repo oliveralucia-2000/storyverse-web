@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <title>StoryVerse</title>
+  <meta name="theme-color" content="#07031A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="StoryVerse">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #07031A; overflow: hidden; overscroll-behavior: none; }
+    #app { position: fixed; left: env(safe-area-inset-left); right: env(safe-area-inset-right);
+           top: env(safe-area-inset-top); bottom: env(safe-area-inset-bottom); }
+    #loader { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+              background: radial-gradient(circle at 50% 35%, #2B1060, #150833 55%, #07031A); color: #F4EEFF;
+              font-family: -apple-system, system-ui, sans-serif; z-index: 10; }
+    #loader img { width: 110px; height: 110px; border-radius: 24px; animation: pulse 1.6s ease-in-out infinite; }
+    #loader p { margin-top: 18px; font-weight: 300; letter-spacing: 3px; font-size: 22px; }
+    #loader small { opacity: .6; letter-spacing: 1px; }
+    @keyframes pulse { 0%,100% { transform: scale(.94); opacity: .8 } 50% { transform: scale(1); opacity: 1 } }
+  </style>
+  <script src="storage.js"></script>
+  <script src="storyverse.js" defer></script>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="loader"><img src="apple-touch-icon.png" alt=""><p>StoryVerse</p><small>cargando…</small></div>
+</body>
+</html>
