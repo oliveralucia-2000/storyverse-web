@@ -156,13 +156,16 @@
       var b = new Blob([text], { type: 'application/json' });
       var file = null;
       try { file = new File([b], name, { type: 'application/json' }); } catch (e) {}
+      var anchor = function () {
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(b); a.download = name;
+        document.body.appendChild(a); a.click(); a.remove();
+      };
       if (file && navigator.canShare && navigator.canShare({ files: [file] }) && /iPhone|iPad|Android/i.test(navigator.userAgent)) {
-        navigator.share({ files: [file], title: name }).catch(function () {});
+        navigator.share({ files: [file], title: name }).catch(function (e) { if (!e || e.name !== 'AbortError') anchor(); });
         return;
       }
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(b); a.download = name;
-      document.body.appendChild(a); a.click(); a.remove();
+      anchor();
     },
     pickTextFile: function (cb) {
       var i = document.createElement('input');
